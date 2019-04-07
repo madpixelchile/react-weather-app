@@ -1,0 +1,63 @@
+
+
+@import './../../../base-styles/config.scss';
+
+.weather-data-cont{
+    background: #ccc;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.weather-value-conts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaeaea;
+    padding: 10px 10px 18px;
+    border-radius: 6px;
+
+    i{
+        color: #00a5ff;
+        padding: 5px;
+    }
+
+    .text-degrees{
+        font-size: 25px;
+        color: #333;
+        font-family: $font-family-bold;
+    }
+}
+
+
+
+
+@media only screen and (max-width: $screen-xl-min) { //1280px
+	
+}	
+	
+@media only screen and (max-width: $screen-lg-min) { //1200px
+	
+}
+
+@media only screen and (max-width: $screen-l-min) { //1199px
+	
+}
+
+@media only screen and (max-width: $screen-md-min) { //992px
+
+}
+
+@media only screen and (max-width: $screen-sm-min) { //768px
+
+}
+  
+  
+@media only screen and (max-width: $screen-xs-min) { //560px
+
+}
+
+
+@media only screen and (max-width: $screen-xxs-min) { //400px
+
+}

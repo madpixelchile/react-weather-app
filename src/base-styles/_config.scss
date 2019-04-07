@@ -1,0 +1,252 @@
+
+
+/*------------------------------------------------------------------------------Main color variables */
+
+$color-base:						#373737;
+$color-primary: 					#DF471E; 
+$color-primary-hover:				#BC3815;
+
+$color-secondary:					#122337;
+$color-secondary-transparent-light:	rgba($color-secondary, 0.9);	
+$color-secondary-transparent-dark:	rgba($color-secondary, 0.95);	
+
+$color-disabled:					#9B9B9B;
+$color-text-disabled:				#4A4A4A;
+    
+$color-bg:							#EEEEEE;
+    
+$color-white:						#ffffff;
+$color-black:						#000000;
+    
+$color-deploy-menu:					#122337;
+    
+$color-error:						#DF471E;
+$color-success:						#7AB546;
+$color-field-alert-bg:				#FDE9E5;
+$color-field-alert-text:			#838383;
+
+$color-misc-accordion-border:		#DDDDDD;
+
+/*------------------------------------------------------------------------------Colors and backgrounds */
+
+
+.bg {
+&-primary {
+    background-color: $color-primary;
+}
+&-secondary{
+    background: $color-secondary;
+}
+&-white{
+    background: $color-white;
+}
+&-secondary-transparent{
+    background: rgba( $color-secondary, .9 );
+}
+}
+
+.color {
+&-primary {
+    color: $color-primary;
+}
+&-secondary{
+    color: $color-secondary;
+}
+&-white{
+    color: $color-white;
+}
+&-secondary-transparent{
+    color: rgba( $color-secondary, .9 );
+}
+}
+
+
+
+/*------------------------------------------------------------------------------Font base */
+
+$font-size-base: 		16px;
+$font-family-base: 		'Roboto', sans-serif;
+
+$font-family-light:   		 'Korolev-Light';
+$font-family-medium:  		 'Korolev-Medium';
+$font-family-bold:    		 'Korolev-Bold';
+$font-family-bold-italic:    'Korolev-Bold-italic';
+
+
+/*------------------------------------------------------------------------------Line height base */
+
+
+$line-height-base: 140%;
+
+/*------------------------------------------------------------------------------Font weight */
+
+$font-weight-light:  300;
+$font-weight-normal: 500;
+$font-weight-bold:   700;
+
+
+/*------------------------------------------------------------------------------Mixins */
+
+@mixin border-radius($radius) {
+              border-radius: $radius;
+           -o-border-radius: $radius;
+          -ms-border-radius: $radius;
+         -moz-border-radius: $radius;
+      -webkit-border-radius: $radius;
+}
+
+
+@mixin box-shadow($top, $left, $blur, $color) {
+
+    -webkit-box-shadow:$top $left $blur $color;
+    -moz-box-shadow:$top $left $blur $color;
+    box-shadow:$top $left $blur $color;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin triangle($direction, $width, $height, $color) {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    @if $direction == top {
+        border-left: ($width / 2) solid transparent;
+        border-right: ($width / 2) solid transparent;
+        border-bottom: $height solid $color;
+    } @else if $direction == bottom {
+        border-left: ($width / 2) solid transparent;
+        border-right: ($width / 2) solid transparent;
+        border-top: $height solid $color;
+    } @else if $direction == left {
+        border-top: ($width / 2) solid transparent;
+        border-bottom: ($width / 2) solid transparent;
+        border-right: $height solid $color;
+    } @else if $direction == right {
+        border-top: ($width / 2) solid transparent;
+        border-bottom: ($width / 2) solid transparent;
+        border-left: $height solid $color;
+    }
+}
+
+
+@mixin offset-margin($margin, $value){
+    margin-#{$margin}: $value;
+}
+
+@mixin offsety-margin($margin, $value){
+    margin-#{$margin}: -$value;
+}
+
+@mixin set-bg-img($cool_url, $fallback_url) {
+    background-image: $cool_url;
+    .no-svg & {
+        background-image: $fallback_url;
+    }
+}
+
+@mixin linear-gradient($direction, $color-stops...) {
+    @if is-direction($direction) == false {
+        $color-stops: $direction, $color-stops;
+        $direction: 180deg;
+    }
+
+    background: nth(nth($color-stops, 1), 1);
+    background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+    background: linear-gradient($direction, $color-stops);
+}
+
+
+@mixin gradient-radial($inner-color, $outer-color) {
+    background-image: -webkit-radial-gradient(circle, $inner-color, $outer-color);
+    background-image: radial-gradient(circle, $inner-color, $outer-color);
+    background-repeat: no-repeat;
+}
+
+
+@for $i from 1 through 12 {
+    @each $margin in top, left, bottom, right {
+
+        .offset-#{$margin}-#{$i}{
+            @include offset-margin($margin, 10px * $i)
+        }
+
+        .offsety-#{$margin}-#{$i}{
+            @include offsety-margin($margin, 10px * $i)
+        }
+
+    }
+}
+
+/*------------------------------------------------------------------------------Global paddings */
+
+
+@for $i from 1 through 5 {
+   .pad-right-#{$i*10} { padding-right: 10px * $i; }
+}
+@for $i from 1 through 5 {
+   .pad-left-#{$i*10} { padding-left: 10px * $i; }
+}
+@for $i from 1 through 5 {
+   .pad-top-#{$i*10} { padding-top: 10px * $i; }
+}
+@for $i from 1 through 5 {
+   .pad-bottom-#{$i*10} { padding-bottom: 10px * $i; }
+}
+
+
+@for $i from 1 through 5 {
+    .right-#{$i*10} { right: 10px * $i; }
+}
+@for $i from 1 through 5 {
+    .left-#{$i*10} { left: 10px * $i; }
+}
+@for $i from 1 through 5 {
+    .top-#{$i*10} { top: 10px * $i; }
+}
+@for $i from 1 through 5 {
+    .bottom-#{$i*10} { bottom: 10px * $i; }
+}
+
+
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+
+
+/*------------------------------------------------------------------------------Font size */
+
+$font-size-h1: 62px;
+$font-size-h2: 42px;
+$font-size-h3: 32px;
+$font-size-h4: 32px;
+$font-size-h5: 22px;
+$font-size-h6: 20px;
+
+/*------------------------------------------------------------------------------Breakpoints */
+
+$screen-xxs-min: 	 400px;
+$screen-xs-min: 	 560px;
+$screen-sm-min: 	 768px;
+$screen-md-min: 	 992px;
+$screen-l-min: 		1199px;
+$screen-lg-min: 	1200px;
+$screen-xl-min: 	1280px;
+
+
+/*------------------------------------------------------------------------------Margins */
+
+$margen: 10px;
+
+
+
+

@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 
 import WeatherLocation from './components/WeatherLocation';
 
-import './App.css';
+import './base-styles/main.scss';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-          <span>Aplicación en react</span>
-          <WeatherLocation city={'Santiago dd'}/>
+          <WeatherLocation/>
       </div>
     );
   }

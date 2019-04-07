@@ -8,8 +8,7 @@ const WeatherLocation = () =>{
 
     return(
         <div>
-            Wheater Location
-            <Location />
+            <Location city={'chile'}/>
             <WeatherData />
         </div>
        

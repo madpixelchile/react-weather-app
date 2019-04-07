@@ -13,12 +13,23 @@ body{
 }
 
 
-span + span{
-  display: inline-block;
-  margin-top: 20px;
-}
+// span + span{
+//   display: inline-block;
+//   margin-top: 20px;
+// }
 
 
-div + div{
-  margin-top: 10px;
+// div + div{
+//   margin-top: 10px;
+// }
+
+.App{
+  max-width: 600px;
+  margin: 0 auto;
 }
+
+.small-title{
+  color: #333;
+  font-size: 12px;
+}
+
