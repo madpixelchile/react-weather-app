@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## `yarn install`
+
+En la carpeta descargada debemos descargar los módulos de node necesarios para comenzar a trabajar
+
 ## Available Scripts
 
 In the project directory, you can run:
