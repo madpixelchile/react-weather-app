@@ -9,7 +9,7 @@ import{FOG} from './../../constants/Weathers';
 
 const location = "Santiago, CL";
 const api_key = "7332e4793f6b1ffdf08f63d552ddc17d";
-const url_base_weather = "https://samples.openweathermap.org/data/2.5/weather";
+const url_base_weather = "http://api.openweathermap.org/data/2.5/weather";
 
 
 const api_weather = `${url_base_weather}?q=${location}&appid=${api_key}`;
@@ -37,7 +37,19 @@ class WeatherLocation extends Component {
     handleUpdateClick = () =>{ //Esta función corresponde a los eventos que ocurrirán después de generado el click. Siempre dentro ->
         // de una función tipo clase debemos de ocupar el this para referenciar asi mismo al elemento.
         
+        //Consulta api rest con Fetch, también se puede usar axios, pero fetch nativo de react (viene con react).
 
+        fetch(api_weather).then(resolve =>{
+
+            return resolve.json();
+
+        }).then(data =>{
+
+            console.log(data);
+            // debugger;
+
+        })
+        
         this.setState({ //Para actualizar lo que está en el state siempre debe de ser aplicado el "setState".
             city: 'SANTIAGO DE CHILE',
         });
