@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Location from './Location';
 import {WeatherData} from './WeatherData';
 
-import{FOG} from './../../constants/Weathers';
+import{FOG, SUN} from './../../constants/Weathers';
 
 
 const location = "Santiago, CL";
@@ -34,6 +34,32 @@ class WeatherLocation extends Component {
         }
     }
 
+
+    getWeatherState = weather_data =>{
+        return SUN;
+    }
+
+
+    getData = weather_data => {
+        
+        const {humidity, temp} = weather_data.main;
+        const {speed} = weather_data.wind;
+        const weatherState = this.getWeatherState(weather_data);
+        
+
+        const data ={
+            humidity, 
+            temperature: temp,
+            weatherState,
+            wind: `${speed} m/s`,
+        }
+
+        return data;
+
+    }
+
+//CLASE 47
+
     handleUpdateClick = () =>{ //Esta función corresponde a los eventos que ocurrirán después de generado el click. Siempre dentro ->
         // de una función tipo clase debemos de ocupar el this para referenciar asi mismo al elemento.
         
@@ -44,9 +70,17 @@ class WeatherLocation extends Component {
             return resolve.json();
 
         }).then(data =>{
+            
+            const newWeather = this.getData(data);
 
-            console.log(data);
-            // debugger;
+            console.log(newWeather);
+            debugger;
+
+            this.setState({
+
+                data: newWeather,
+
+            });
 
         })
         
