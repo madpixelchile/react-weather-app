@@ -3,7 +3,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {WeatherExtraInfo} from './WeatherExtraInfo';
+import WeatherExtraInfo from './WeatherExtraInfo';
 import {WeatherTemperature} from './WeatherTemperature';
 
 //Uso y carga de multiples constantes en un archivo

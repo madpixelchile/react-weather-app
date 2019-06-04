@@ -1,7 +1,9 @@
 
 import React, { Component } from 'react';
 
-import CircularProgress from '@material-ui/core/CircularProgress'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import {PropTypes} from 'prop-types';
 
 import transformWeather from './../../services/transformWeather';
 
@@ -24,10 +26,14 @@ import {WeatherData} from './WeatherData';
 class WeatherLocation extends Component {
 
     //Es el constructor en donde comienza la construcción de un componente ESTABLECIENDO EL ESTADO INICIAL DEL COMPONENTE
-    constructor(){
-        super(); //Para que el constructor funcione correctamente. el super constructor es el constructor del componente base
+    constructor(props){
+        super(props); //Para que el constructor funcione correctamente. el super constructor es el constructor del componente base
+
+        const {city} = props;
+
+
         this.state ={ //State es algo propio de los componentes tipo clase. Es el estado local de nuestro componente.
-            city: 'santiago de chile',
+            city: city,
             data: null,
         }
 
@@ -86,7 +92,7 @@ class WeatherLocation extends Component {
         })
         
         this.setState({ //Para actualizar lo que está en el state siempre debe de ser aplicado el "setState".
-            city: 'SANTIAGO DE CHILE',
+            city: this.props.city,
         });
 
         // console.log(this.state.city);
@@ -109,5 +115,12 @@ class WeatherLocation extends Component {
     };
 
 }
+
+
+WeatherLocation.propTypes = {
+    city: PropTypes.string.isRequired,
+}
+
+
 
 export default WeatherLocation;
