@@ -5,12 +5,15 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {PropTypes} from 'prop-types';
 
+import getUrlWeatherByCity from './../../services/getUrlWeatherByCity';
+
 import transformWeather from './../../services/transformWeather';
 
-import {api_weather} from './../../constants/api_url'
+// import {api_weather} from './../../constants/api_url';
 
 import Location from './Location';
 import {WeatherData} from './WeatherData';
+// import getUrlWeatherByCity from '../../services/getUrlWeatherByCity';
 
 // import{FOG} from './../../constants/Weathers';
 
@@ -33,7 +36,7 @@ class WeatherLocation extends Component {
 
 
         this.state ={ //State es algo propio de los componentes tipo clase. Es el estado local de nuestro componente.
-            city: city,
+            city,
             data: null,
         }
 
@@ -69,7 +72,9 @@ class WeatherLocation extends Component {
 
     handleUpdateClick = () =>{ //Esta función corresponde a los eventos que ocurrirán después de generado el click. Siempre dentro ->
         // de una función tipo clase debemos de ocupar el this para referenciar asi mismo al elemento.
-        console.log('toke');
+        // console.log('toke');
+
+        const api_weather = getUrlWeatherByCity(this.state.city);
         
         //Consulta api rest con Fetch, también se puede usar axios, pero fetch nativo de react (viene con react).
         fetch(api_weather).then(resolve =>{
