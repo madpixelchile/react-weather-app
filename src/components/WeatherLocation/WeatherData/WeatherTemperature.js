@@ -6,12 +6,15 @@ import WeatherIcons from 'react-weathericons';
 //Esto es para validar estrictamente de que cada propiedad o prop de cada jsx sea explicitamente de tipo número, string, etc. instalación: yarn add prop-types
 import PropTypes from 'prop-types';
 
-import {FOG, CLOUDY, SUN} from './../../../constants/Weathers';
+import { SUN, CLOUD, RAIN ,SNOW , THUNDER ,DRIZZLE} from './../../../constants/Weathers';
 
 const icons = {
-    [FOG]:    'fog',
-    [CLOUDY]: 'cloudy',
-    [SUN]:    'day-sunny'
+    [SUN]:        'day-sunny',
+    [CLOUD]:      'cloud',
+    [RAIN]:       'rain',
+    [SNOW]:       'snow',
+    [THUNDER]:    'day-thunderstore',
+    [DRIZZLE]:    'day-showers',
 }
 
 const getWeatherIcon = weatherstate =>{
