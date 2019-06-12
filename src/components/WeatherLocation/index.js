@@ -15,6 +15,8 @@ import Location from './Location';
 import {WeatherData} from './WeatherData';
 // import getUrlWeatherByCity from '../../services/getUrlWeatherByCity';
 
+import './WeatherLocation.scss';
+
 // import{FOG} from './../../constants/Weathers';
 
 
@@ -40,19 +42,19 @@ class WeatherLocation extends Component {
             data: null,
         }
 
-        console.log('constructor');
+        // console.log('constructor');
 
     }
 
     componentDidMount(){
         //El componente se montó
-        console.log('component Did Mount');
+        // console.log('component Did Mount');
         this.handleUpdateClick();
     }
 
     componentDidUpdate(prevProps, prevState){
         //El componente se actualizó
-        console.log('component Did Update');
+        // console.log('component Did Update');
     }
 
 
@@ -85,7 +87,7 @@ class WeatherLocation extends Component {
             
             const newWeather = transformWeather(data);
 
-            console.log(newWeather);
+            // console.log(newWeather);
             // debugger;
 
             this.setState({
@@ -106,19 +108,21 @@ class WeatherLocation extends Component {
 
     render(){
 
-        const {onWeatherLoactionClick} = this.props;
+        const {onWeatherLocationClick} = this.props;
 
-        console.log('render');
+        // console.log('render');
 
         const {city, data} = this.state;
 
         return(
-            <div className="WeatherLocationCont" onClick={onWeatherLoactionClick}>
+            <div className="WeatherLocationCont" onClick={onWeatherLocationClick}>
                 <Location city={city}/>
                 {
                     data ? <WeatherData finalData={data}/> : <CircularProgress size={50}/> 
                 } 
                 {/* <button onClick={this.handleUpdateClick}>{data ? 'Actualizar' : <CircularProgress size={50}/>}</button> */}
+
+
             </div>
         );
     };
