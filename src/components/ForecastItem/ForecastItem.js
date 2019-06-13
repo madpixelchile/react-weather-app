@@ -3,11 +3,25 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
+import WeatherData from './../WeatherLocation/WeatherData/';
+
+const data = {
+    temperature: 10,
+    humidity: 10,
+    weatherState: 'normal',
+    wind: 'normal',
+}
 
 const ForecastItem = ({weekDay, hour})=>{ // es lo mismo que el siguiente comentado, con la diferencia es que con llaves podermos incorporar mas de una linea
-    return(
-        <div>{weekDay} Hora: {hour} hrs.</div>
-    )
+
+    // if(toke){
+        return(
+            <div>
+                <div>{weekDay} Hora: {hour} hrs.</div>
+                <WeatherData data={data}></WeatherData>
+            </div>
+        )
+    // }
 }
 
 // const ForecastItem = ()=>( //Este permite una línea de código y no requiere return. Para mí es más completo con las llaves y return. No se si afecta en performance.
@@ -16,7 +30,8 @@ const ForecastItem = ({weekDay, hour})=>{ // es lo mismo que el siguiente coment
 
 
 ForecastItem.propTypes = {
-    cities: PropTypes.string.isRequired,
+    weekDay: PropTypes.string.isRequired,
+    hour: PropTypes.number.isRequired,
 }
 
 export default ForecastItem;

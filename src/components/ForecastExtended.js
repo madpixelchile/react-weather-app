@@ -21,9 +21,7 @@ const allDays = [
 class ForecastExtended extends Component{
 
     renderForecastItemDays(allDays){
-        allDays && allDays.map((obj,i)=>(
-            <ForecastItem key={i} weekDay={obj} hour={10} />
-        ));
+        return allDays.map( obj => ( <ForecastItem key={obj} weekDay={obj} hour={10} /> ))
     }
 
     render(){

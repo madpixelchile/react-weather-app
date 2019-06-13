@@ -12,7 +12,7 @@ import transformWeather from './../../services/transformWeather';
 // import {api_weather} from './../../constants/api_url';
 
 import Location from './Location';
-import {WeatherData} from './WeatherData';
+import WeatherData from './WeatherData';
 // import getUrlWeatherByCity from '../../services/getUrlWeatherByCity';
 
 import './WeatherLocation.scss';
@@ -118,7 +118,7 @@ class WeatherLocation extends Component {
             <div className="WeatherLocationCont" onClick={onWeatherLocationClick}>
                 <Location city={city}/>
                 {
-                    data ? <WeatherData finalData={data}/> : <CircularProgress size={50}/> 
+                    data ? <WeatherData data={data}/> : <CircularProgress size={50}/> 
                 } 
                 {/* <button onClick={this.handleUpdateClick}>{data ? 'Actualizar' : <CircularProgress size={50}/>}</button> */}
 
