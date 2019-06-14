@@ -84,7 +84,7 @@ class App extends Component {
 
                 <Col xs={12} md={4}>
                     <div className={`details`}>
-                        { !ciudad ? <h4>No se ha seleccionado ciudad aún</h4> : <ForecastExtended passCity={ciudad}/> }
+                        { !ciudad ? <h4>No se ha seleccionado ciudad aún</h4> : <ForecastExtended city={ciudad}/> }
                     </div>
                 </Col>
             </Row>
