@@ -9,7 +9,7 @@ const WeatherExtraInfo = ({humidity, wind})=>{
     return(
         <div>
             <span className="small-title">Información extra</span>
-            <div>
+            <div className={`data-values data-values`}>
                 <span>{humidity} %</span>
                 <span>{wind} wind</span>
             </div>

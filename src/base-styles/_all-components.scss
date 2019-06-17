@@ -5,12 +5,47 @@
     border-radius: 6px;
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 10px;
     margin-top: 55px;
 
     // @media screen and (max-width: 991px) {
     //     margin-top: 20px;
     // }
+
+    .weather-data-cont{
+        background: #a9c591;
+        padding: 6px;
+        margin-top: 0;
+    }
+
+    .weather-value-conts{
+        padding: 4px;
+    }
+
+    .text-degrees{
+        font-size: 17px;
+    }
+
+    i{
+        padding: 0 6px 0;
+        font-size: 14px !important;
+    }
+
+    .text-date{
+        padding: 2px;
+        font-size: 12px;
+        margin: 0;
+        color: white;
+    }
+
+    .small-title{
+        + div{
+            > span{
+                font-size: 12px;
+            }
+        }
+    }
+    
 
 }
 
@@ -20,4 +55,5 @@
         text-align: center;
         font-weight: 100;
     }
+
 }

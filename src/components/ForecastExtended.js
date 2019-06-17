@@ -41,9 +41,25 @@ class ForecastExtended extends Component{
 
     }
 
-
+ 
     componentDidMount(){
+        this.updateCity(this.props.city);
+    }
 
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.city !== this.props.city){
+            this.setState({
+                forecastData: null,
+            });
+            this.updateCity(nextProps.city);
+        }
+    }
+
+
+    updateCity = (city)=>{
+
+        
         const urlForecast = `${url}?q=${this.props.city}&appid=${keyUrl}`;
 
         //Fetch or axios
@@ -51,9 +67,9 @@ class ForecastExtended extends Component{
         fetch(urlForecast).then((resolve)=>{
             return resolve.json();
         }).then((weather_data)=>{
-            console.log(weather_data);
+            // console.log(weather_data);
             const forecastData = transformForecast(weather_data);
-            console.log(weather_data);
+            // console.log(weather_data);
             this.setState({
                 forecastData: forecastData,
             })
@@ -62,11 +78,20 @@ class ForecastExtended extends Component{
             return error;
         })
 
+
     }
 
-    renderForecastItemDays(){
-        return <h4>Render items</h4>;
-        // return allDays.map( obj => ( <ForecastItem key={obj} weekDay={obj} hour={10} /> ))
+
+
+    renderForecastItemDays(forecastData){
+        return forecastData && forecastData.map( forecast => ( 
+            <ForecastItem 
+                key={`${forecast.weekDay}${forecast.hour}`} 
+                weekDay={forecast.weekDay}
+                hour={forecast.hour}
+                data={forecast.data}
+            /> 
+        ))
     }
 
     renderProgress = ()=>{
@@ -93,7 +118,7 @@ class ForecastExtended extends Component{
                 </h4>
 
                 {
-                    forecastData ? this.renderForecastItemDays() : this.renderProgress()
+                    forecastData ? this.renderForecastItemDays(forecastData) : this.renderProgress()
                 }
                 
             </div>

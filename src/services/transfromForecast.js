@@ -1,6 +1,10 @@
 
 import moment from 'moment';
 
+import transformWather from './transformWeather';
+
+import 'moment/locale/es';
+
 const transformForecast = data => (
     data.list.filter( item =>(
 
@@ -8,6 +12,12 @@ const transformForecast = data => (
         moment.unix(item.dt).utc().hour() === 12 ||
         moment.unix(item.dt).utc().hour() === 18
 
+    )).map((item)=>(
+        {
+            weekDay: moment.unix(item.dt).format('ddd'),
+            hour: moment.unix(item.dt).hour(),
+            data: transformWather(item),
+        }
     ))
 )
 

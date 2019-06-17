@@ -5,7 +5,7 @@
 .weather-data-cont{
     background: #ccc;
     border-radius: 6px;
-    padding: 20px;
+    padding: 10px;
 
     margin-top: 10px;
 
@@ -17,7 +17,7 @@
     justify-content: center;
 
     background: #eaeaea;
-    padding: 10px 10px 18px;
+    padding: 0;
     border-radius: 6px;
 
     i{
@@ -26,7 +26,7 @@
     }
 
     .text-degrees{
-        font-size: 25px;
+        font-size: 22px;
         color: #333;
         font-family: $font-family-bold;
     }
